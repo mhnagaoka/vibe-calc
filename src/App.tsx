@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "./components/ui/button";
 import {
   Card,
@@ -6,8 +7,20 @@ import {
   CardHeader,
   CardTitle,
 } from "./components/ui/card";
+import { Display } from "./components/Display";
 
 function App() {
+  // RPN Calculator State
+  const [stack, setStack] = useState({
+    t: 0,
+    z: 0,
+    y: 0,
+    x: 0,
+  });
+
+  // Suppress unused variable warning for now - will be used in next steps
+  void setStack;
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -21,27 +34,7 @@ function App() {
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Display Area */}
-          <div className="bg-secondary/20 rounded-lg p-3 min-h-[140px] border">
-            <div className="text-xs text-muted-foreground mb-2">Display:</div>
-            <div className="space-y-1 font-mono">
-              <div className="text-sm text-muted-foreground flex justify-between">
-                <span>T:</span>
-                <span>0</span>
-              </div>
-              <div className="text-sm text-muted-foreground flex justify-between">
-                <span>Z:</span>
-                <span>0</span>
-              </div>
-              <div className="text-sm text-muted-foreground flex justify-between">
-                <span>Y:</span>
-                <span>0</span>
-              </div>
-              <div className="text-xl font-bold flex justify-between">
-                <span>X:</span>
-                <span>0</span>
-              </div>
-            </div>
-          </div>
+          <Display stack={stack} />
 
           {/* Button Grid */}
           <div className="grid grid-cols-5 gap-2">
