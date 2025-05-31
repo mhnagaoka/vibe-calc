@@ -46,40 +46,75 @@ function App() {
           {/* Button Grid */}
           <div className="grid grid-cols-5 gap-2">
             {/* Row 1: Stack Operations */}
-            <Button variant="outline" className="text-sm">Swap</Button>
-            <Button variant="outline" className="text-sm">Drop</Button>
-            <Button variant="outline" className="text-sm">Clear</Button>
-            <Button variant="outline" className="text-sm">lst x</Button>
-            <Button variant="destructive" className="text-sm">⌫</Button>
+            <Button variant="outline" className="text-sm">
+              Swap
+            </Button>
+            <Button variant="outline" className="text-sm">
+              Drop
+            </Button>
+            <Button variant="outline" className="text-sm">
+              Clear
+            </Button>
+            <Button variant="outline" className="text-sm">
+              Last X
+            </Button>
+            <Button variant="destructive" className="text-sm">
+              ⌫
+            </Button>
           </div>
-          
+
           {/* Number and Operation Grid */}
           <div className="grid grid-cols-4 gap-2">
             {/* Row 1: Numbers and Division */}
             <Button variant="secondary">7</Button>
             <Button variant="secondary">8</Button>
             <Button variant="secondary">9</Button>
-            <Button variant="default" className="bg-orange-500 hover:bg-orange-600">÷</Button>
-            
+            <Button
+              variant="default"
+              className="bg-orange-500 hover:bg-orange-600"
+            >
+              ÷
+            </Button>
+
             {/* Row 2: Numbers and Multiplication */}
             <Button variant="secondary">4</Button>
             <Button variant="secondary">5</Button>
             <Button variant="secondary">6</Button>
-            <Button variant="default" className="bg-orange-500 hover:bg-orange-600">×</Button>
-            
+            <Button
+              variant="default"
+              className="bg-orange-500 hover:bg-orange-600"
+            >
+              ×
+            </Button>
+
             {/* Row 3: Numbers and Subtraction */}
             <Button variant="secondary">1</Button>
             <Button variant="secondary">2</Button>
             <Button variant="secondary">3</Button>
-            <Button variant="default" className="bg-orange-500 hover:bg-orange-600">−</Button>
-            
+            <Button
+              variant="default"
+              className="bg-orange-500 hover:bg-orange-600"
+            >
+              −
+            </Button>
+
             {/* Row 4: Zero, Decimal, Addition */}
-            <Button variant="secondary" className="col-span-2">0</Button>
+            <Button variant="secondary" className="col-span-2">
+              0
+            </Button>
             <Button variant="secondary">.</Button>
-            <Button variant="default" className="bg-orange-500 hover:bg-orange-600">+</Button>
-            
+            <Button
+              variant="default"
+              className="bg-orange-500 hover:bg-orange-600"
+            >
+              +
+            </Button>
+
             {/* Row 5: Enter Button */}
-            <Button variant="default" className="col-span-4 bg-blue-600 hover:bg-blue-700 font-semibold">
+            <Button
+              variant="default"
+              className="col-span-4 bg-blue-600 hover:bg-blue-700 font-semibold"
+            >
               Enter
             </Button>
           </div>
