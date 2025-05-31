@@ -20,6 +20,7 @@ The most relevant stack elements have their own names:
 - X is the top of the stack, the last entered number.
 - Y is the second element of the stack, the second last entered number.
 - Z is the third element of the stack, the third last entered number.
+- T is the fourth element of the stack, the fourth last entered number.
 
 Stack operations are essential for managing the stack during calculations. The following operations will be implemented:
 
@@ -73,7 +74,7 @@ The picture below shows the basic screen layout:
   - Configure Tailwind CSS in the project.
   - Initialize ShadCN UI components within the project.
 
-- [ ] **Step 2: Create the Basic Calculator Layout:**
+- [x] **Step 2: Create the Basic Calculator Layout:** ✅ **COMPLETED**
 
   - Design the basic layout of the calculator interface. This will include:
     - A display area to show the current stack and input.

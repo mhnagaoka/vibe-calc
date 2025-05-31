@@ -20,25 +20,69 @@ function App() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="text-center">
-            <p className="text-sm text-muted-foreground mb-4">
-              Project setup complete! ✨
-            </p>
-            <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">
-                ✅ Vite + React + TypeScript
-              </p>
-              <p className="text-xs text-muted-foreground">
-                ✅ Tailwind CSS v4
-              </p>
-              <p className="text-xs text-muted-foreground">
-                ✅ ShadCN UI Components
-              </p>
+          {/* Display Area */}
+          <div className="bg-secondary/20 rounded-lg p-3 min-h-[140px] border">
+            <div className="text-xs text-muted-foreground mb-2">Display:</div>
+            <div className="space-y-1 font-mono">
+              <div className="text-sm text-muted-foreground flex justify-between">
+                <span>T:</span>
+                <span>0</span>
+              </div>
+              <div className="text-sm text-muted-foreground flex justify-between">
+                <span>Z:</span>
+                <span>0</span>
+              </div>
+              <div className="text-sm text-muted-foreground flex justify-between">
+                <span>Y:</span>
+                <span>0</span>
+              </div>
+              <div className="text-xl font-bold flex justify-between">
+                <span>X:</span>
+                <span>0</span>
+              </div>
             </div>
           </div>
-          <Button className="w-full" variant="default">
-            Ready to Build Calculator
-          </Button>
+
+          {/* Button Grid */}
+          <div className="grid grid-cols-5 gap-2">
+            {/* Row 1: Stack Operations */}
+            <Button variant="outline" className="text-sm">Swap</Button>
+            <Button variant="outline" className="text-sm">Drop</Button>
+            <Button variant="outline" className="text-sm">Clear</Button>
+            <Button variant="outline" className="text-sm">lst x</Button>
+            <Button variant="destructive" className="text-sm">⌫</Button>
+          </div>
+          
+          {/* Number and Operation Grid */}
+          <div className="grid grid-cols-4 gap-2">
+            {/* Row 1: Numbers and Division */}
+            <Button variant="secondary">7</Button>
+            <Button variant="secondary">8</Button>
+            <Button variant="secondary">9</Button>
+            <Button variant="default" className="bg-orange-500 hover:bg-orange-600">÷</Button>
+            
+            {/* Row 2: Numbers and Multiplication */}
+            <Button variant="secondary">4</Button>
+            <Button variant="secondary">5</Button>
+            <Button variant="secondary">6</Button>
+            <Button variant="default" className="bg-orange-500 hover:bg-orange-600">×</Button>
+            
+            {/* Row 3: Numbers and Subtraction */}
+            <Button variant="secondary">1</Button>
+            <Button variant="secondary">2</Button>
+            <Button variant="secondary">3</Button>
+            <Button variant="default" className="bg-orange-500 hover:bg-orange-600">−</Button>
+            
+            {/* Row 4: Zero, Decimal, Addition */}
+            <Button variant="secondary" className="col-span-2">0</Button>
+            <Button variant="secondary">.</Button>
+            <Button variant="default" className="bg-orange-500 hover:bg-orange-600">+</Button>
+            
+            {/* Row 5: Enter Button */}
+            <Button variant="default" className="col-span-4 bg-blue-600 hover:bg-blue-700 font-semibold">
+              Enter
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </div>
