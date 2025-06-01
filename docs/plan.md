@@ -88,7 +88,7 @@ The picture below shows the basic screen layout:
   - Decide how the stack will be visually represented (e.g., a list of numbers).
   - Implement basic styling for the display using Tailwind CSS and ShadCN components (e.g., a `Card` or a custom styled `div`).
 
-- [ ] **Step 4: Implement the Number Input Buttons:**
+- [x] **Step 4: Implement the Number Input Buttons:** ✅ **COMPLETED**
 
   - Create React components for the number buttons (0-9 and ".").
   - Implement the logic to handle button clicks and update the current input value.
