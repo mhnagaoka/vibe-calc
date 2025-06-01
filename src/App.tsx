@@ -24,7 +24,17 @@ function App() {
 
   // Handler for number button clicks
   const handleNumberClick = (digit: string) => {
-    setInputValue((prev) => prev + digit);
+    // Prevent multiple leading zeros (except for decimal cases)
+    if (digit === "0" && inputValue === "0") {
+      return;
+    }
+
+    // If inputValue is "0" and we're adding a non-zero digit, replace the zero
+    if (inputValue === "0" && digit !== "0") {
+      setInputValue(digit);
+    } else {
+      setInputValue((prev) => prev + digit);
+    }
     setIsInputMode(true);
   };
 
@@ -36,8 +46,35 @@ function App() {
     }
   };
 
-  // Suppress unused variable warning for now - will be used in next steps
-  void setStack;
+  // Handler for Enter button (Push operation)
+  const handleEnterClick = () => {
+    if (isInputMode && inputValue !== "") {
+      const numericValue = parseFloat(inputValue);
+
+      // Only push if the value is valid (not NaN)
+      if (!isNaN(numericValue)) {
+        // In RPN: Enter duplicates the input to both X and Y, shifts stack up
+        setStack((prevStack) => ({
+          t: prevStack.z, // T gets old Z value
+          z: prevStack.y, // Z gets old Y value
+          y: numericValue, // Y gets the new input value (duplicate)
+          x: numericValue, // X gets the new input value
+        }));
+
+        // Clear input and exit input mode
+        setInputValue("");
+        setIsInputMode(false);
+      }
+    } else if (!isInputMode) {
+      // If not in input mode but Enter is pressed, duplicate X register (lift stack)
+      setStack((prevStack) => ({
+        t: prevStack.z,
+        z: prevStack.y,
+        y: prevStack.x,
+        x: prevStack.x, // Duplicate the X value
+      }));
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -153,6 +190,7 @@ function App() {
             <Button
               variant="default"
               className="col-span-4 bg-blue-600 hover:bg-blue-700 font-semibold"
+              onClick={handleEnterClick}
             >
               Enter
             </Button>

@@ -94,7 +94,7 @@ The picture below shows the basic screen layout:
   - Implement the logic to handle button clicks and update the current input value.
   - Display the current input value in the display component.
 
-- [ ] **Step 5: Implement the "Enter" (Push) Operation:**
+- [x] **Step 5: Implement the "Enter" (Push) Operation:** ✅ **COMPLETED**
   - Define the core logic for the RPN calculator (initially within the same component for simplicity). This will involve a stack (an array).
   - Implement the "Enter" button functionality: when clicked, it should push the current input value onto the stack and clear the input for the next number.
   - Update the display to show the updated stack.
