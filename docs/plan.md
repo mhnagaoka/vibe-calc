@@ -50,6 +50,7 @@ Here's an example of how the Enter key behavior works in practice:
 - **Press Enter** → Y gets 3, X stays 3 (stack lifts: old Y→Z, old Z→T)
 - **Type 4** → X becomes 4 (the remaining stack elements stay unchanged: Y stays 3)
 - **Press +** → Calculates Y + X = 3 + 4 = 7, result goes to X
+- **Type 5** → X becomes 5, Y becomes 7 (stack lifts: old Y→Z, old Z→T)
 
 This workflow demonstrates the key principles:
 
@@ -128,7 +129,7 @@ The picture below shows the basic screen layout:
 
 ### Phase 2: Implementing Basic Math Operations
 
-- [ ] **Step 6: Implement the "Addition" Operation:**
+- [x] **Step 6: Implement the "Addition" Operation:** ✅ **COMPLETED**
 
   - Implement the logic for the addition operation. This will involve:
     - Popping the last two values from the stack.

@@ -17,28 +17,57 @@ function App() {
   // Input state for current number being typed (UI concern)
   const [inputValue, setInputValue] = useState("");
   const [isInputMode, setIsInputMode] = useState(false);
+  const [shouldLiftOnNextInput, setShouldLiftOnNextInput] = useState(false);
 
   // Handler for number button clicks
   const handleNumberClick = (digit: string) => {
+    // If we should lift the stack on next input (after an operation), do it now
+    if (shouldLiftOnNextInput && !isInputMode) {
+      calculator.enterValue(); // Lift the stack
+      setShouldLiftOnNextInput(false);
+    }
+
     // Prevent multiple leading zeros (except for decimal cases)
     if (digit === "0" && inputValue === "0") {
       return;
     }
 
+    let newInputValue: string;
     // If inputValue is "0" and we're adding a non-zero digit, replace the zero
     if (inputValue === "0" && digit !== "0") {
-      setInputValue(digit);
+      newInputValue = digit;
     } else {
-      setInputValue((prev) => prev + digit);
+      newInputValue = inputValue + digit;
     }
+
+    setInputValue(newInputValue);
     setIsInputMode(true);
+
+    // Immediately update the X register as per the plan
+    const numericValue = parseFloat(newInputValue);
+    if (!isNaN(numericValue)) {
+      calculator.setXRegister(numericValue);
+    }
   };
 
   // Handler for decimal point
   const handleDecimalClick = () => {
     if (!inputValue.includes(".")) {
-      setInputValue((prev) => (prev === "" ? "0." : prev + "."));
+      // If we should lift the stack on next input (after an operation), do it now
+      if (shouldLiftOnNextInput && !isInputMode) {
+        calculator.enterValue(); // Lift the stack
+        setShouldLiftOnNextInput(false);
+      }
+
+      const newInputValue = inputValue === "" ? "0." : inputValue + ".";
+      setInputValue(newInputValue);
       setIsInputMode(true);
+
+      // Immediately update the X register
+      const numericValue = parseFloat(newInputValue);
+      if (!isNaN(numericValue)) {
+        calculator.setXRegister(numericValue);
+      }
     }
   };
 
@@ -49,18 +78,30 @@ function App() {
 
       // Only push if the value is valid (not NaN)
       if (!isNaN(numericValue)) {
-        // Set the X register with the typed value, then perform enter operation
-        calculator.setXRegister(numericValue);
+        // X register is already set, just perform enter operation
         calculator.enterValue();
 
         // Clear input and exit input mode
         setInputValue("");
         setIsInputMode(false);
+        setShouldLiftOnNextInput(false); // Enter resets this flag
       }
     } else if (!isInputMode) {
       // If not in input mode but Enter is pressed, duplicate X register (lift stack)
       calculator.enterValue();
+      setShouldLiftOnNextInput(false);
     }
+  };
+
+  // Handler for addition operation
+  const handleAdditionClick = () => {
+    // Perform the addition operation
+    calculator.addNumbers();
+
+    // Clear input state and set flag to lift stack on next input
+    setInputValue("");
+    setIsInputMode(false);
+    setShouldLiftOnNextInput(true);
   };
 
   return (
@@ -169,6 +210,7 @@ function App() {
             <Button
               variant="default"
               className="bg-orange-500 hover:bg-orange-600"
+              onClick={handleAdditionClick}
             >
               +
             </Button>
