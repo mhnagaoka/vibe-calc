@@ -12,7 +12,6 @@ import {
   multiply,
   divide,
   CalculatorError,
-  type CalculatorState,
 } from "../lib/rpn-calculator";
 
 describe("RPN Calculator Engine", () => {
