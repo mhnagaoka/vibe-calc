@@ -8,17 +8,13 @@ import {
   CardTitle,
 } from "./components/ui/card";
 import { Display } from "./components/Display";
+import { useRPNCalculator } from "./hooks/useRPNCalculator";
 
 function App() {
-  // RPN Calculator State
-  const [stack, setStack] = useState({
-    t: 0,
-    z: 0,
-    y: 0,
-    x: 0,
-  });
+  // Use the RPN calculator hook
+  const calculator = useRPNCalculator();
 
-  // Input state for current number being typed
+  // Input state for current number being typed (UI concern)
   const [inputValue, setInputValue] = useState("");
   const [isInputMode, setIsInputMode] = useState(false);
 
@@ -53,13 +49,9 @@ function App() {
 
       // Only push if the value is valid (not NaN)
       if (!isNaN(numericValue)) {
-        // In RPN: Enter duplicates the input to both X and Y, shifts stack up
-        setStack((prevStack) => ({
-          t: prevStack.z, // T gets old Z value
-          z: prevStack.y, // Z gets old Y value
-          y: numericValue, // Y gets the new input value (duplicate)
-          x: numericValue, // X gets the new input value
-        }));
+        // Set the X register with the typed value, then perform enter operation
+        calculator.setXRegister(numericValue);
+        calculator.enterValue();
 
         // Clear input and exit input mode
         setInputValue("");
@@ -67,12 +59,7 @@ function App() {
       }
     } else if (!isInputMode) {
       // If not in input mode but Enter is pressed, duplicate X register (lift stack)
-      setStack((prevStack) => ({
-        t: prevStack.z,
-        z: prevStack.y,
-        y: prevStack.x,
-        x: prevStack.x, // Duplicate the X value
-      }));
+      calculator.enterValue();
     }
   };
 
@@ -90,7 +77,7 @@ function App() {
         <CardContent className="space-y-4">
           {/* Display Area */}
           <Display
-            stack={stack}
+            stack={calculator.stack}
             inputValue={inputValue}
             isInputMode={isInputMode}
           />

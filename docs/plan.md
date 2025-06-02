@@ -31,6 +31,33 @@ Stack operations are essential for managing the stack during calculations. The f
 - **Last X**: Store the last dropped or operated-on value and allow it to be pushed back onto the stack.
 - **Backspace / Clear X**: Remove the last digit from the current input or clear the current input entirely.
 
+#### Regarding the Enter (Push) operation
+
+When the user types a number, it should affect the value of the X register immediately.
+
+The `Enter` operation pushes the value in the X register to the stack (moving the values of the other stack register) but also
+keeps its value unchanged.
+
+If the user has typed a value, this is the value that should be pushed to the Y register (keeping it also in the X register).
+
+If the user has not typed a value, the current value of the X register is pushed to the Y register (keeping the value of the X register unchanged).
+
+#### Example Workflow
+
+Here's an example of how the Enter key behavior works in practice:
+
+- **Type 3** → X becomes 3 (Y, Z, T remain as before)
+- **Press Enter** → Y gets 3, X stays 3 (stack lifts: old Y→Z, old Z→T)
+- **Type 4** → X becomes 4 (Y stays 3)
+- **Press +** → Calculates Y + X = 3 + 4 = 7, result goes to X
+
+This workflow demonstrates the key principles:
+
+1. Typing immediately updates the X register
+2. Enter duplicates X to Y while preserving X
+3. New typing replaces X while preserving the stack
+4. Operations consume Y and X, putting the result in X
+
 ## Architecture Principles
 
 Architecture Principles
