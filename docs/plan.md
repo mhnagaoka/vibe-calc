@@ -48,7 +48,7 @@ Here's an example of how the Enter key behavior works in practice:
 
 - **Type 3** → X becomes 3 (Y, Z, T remain as before)
 - **Press Enter** → Y gets 3, X stays 3 (stack lifts: old Y→Z, old Z→T)
-- **Type 4** → X becomes 4 (Y stays 3)
+- **Type 4** → X becomes 4 (the remaining stack elements stay unchanged: Y stays 3)
 - **Press +** → Calculates Y + X = 3 + 4 = 7, result goes to X
 
 This workflow demonstrates the key principles:
