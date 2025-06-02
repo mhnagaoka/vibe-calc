@@ -100,7 +100,7 @@ export function drop(state: CalculatorState): CalculatorState {
   return {
     ...state,
     stack: {
-      t: state.stack.t, // T stays the same (fills from "infinity")
+      t: 0, // T gets filled from "infinity" (zero)
       z: state.stack.t, // Z gets old T
       y: state.stack.z, // Y gets old Z
       x: state.stack.y, // X gets old Y
