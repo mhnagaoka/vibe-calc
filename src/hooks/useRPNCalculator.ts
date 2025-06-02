@@ -123,7 +123,7 @@ export function useRPNCalculator(): UseRPNCalculatorReturn {
         case 'clear':
           return clear(state);
         default:
-          throw new CalculatorError(`Unknown stack operation: ${operation}`, 'UNKNOWN_OPERATION');
+          throw new CalculatorError(`Unknown stack operation: ${operation as string}`, 'UNKNOWN_OPERATION');
       }
     });
   }, [updateState]);
@@ -140,7 +140,7 @@ export function useRPNCalculator(): UseRPNCalculatorReturn {
         case 'divide':
           return divide(state);
         default:
-          throw new CalculatorError(`Unknown math operation: ${operation}`, 'UNKNOWN_OPERATION');
+          throw new CalculatorError(`Unknown math operation: ${operation as string}`, 'UNKNOWN_OPERATION');
       }
     });
   }, [updateState]);

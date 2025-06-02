@@ -238,7 +238,7 @@ export function performStackOperation(
       return clear(state);
     default:
       throw new CalculatorError(
-        `Unknown stack operation: ${operation}`,
+        `Unknown stack operation: ${operation as string}`,
         "UNKNOWN_OPERATION"
       );
   }
@@ -259,7 +259,7 @@ export function performMathOperation(
       return divide(state);
     default:
       throw new CalculatorError(
-        `Unknown math operation: ${operation}`,
+        `Unknown math operation: ${operation as string}`,
         "UNKNOWN_OPERATION"
       );
   }
