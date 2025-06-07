@@ -164,7 +164,7 @@ The picture below shows the basic screen layout:
   - Create a "Swap" button and connect it to this logic.
   - Update the display.
 
-- [ ] **Step 11: Implement the "Drop" Operation:**
+- [x] **Step 11: Implement the "Drop" Operation:** ✅ **COMPLETED**
 
   - Implement the logic to remove the top element from the stack.
   - Create a "Drop" button and connect it to this logic.

@@ -149,6 +149,18 @@ function App() {
     setShouldLiftOnNextInput(true); // After swap, next input should lift the stack
   };
 
+  // Handler for drop operation
+  const handleDropClick = () => {
+    // Perform the drop operation (removes X register, pulls stack down)
+    calculator.dropX();
+
+    // When drop is performed, we should exit input mode to show the updated X register
+    // This ensures the display reflects the dropped value immediately
+    setInputValue("");
+    setIsInputMode(false);
+    setShouldLiftOnNextInput(true); // After drop, next input should lift the stack
+  };
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -178,7 +190,11 @@ function App() {
             >
               Swap
             </Button>
-            <Button variant="outline" className="text-sm">
+            <Button
+              variant="outline"
+              className="text-sm"
+              onClick={handleDropClick}
+            >
               Drop
             </Button>
             <Button variant="outline" className="text-sm">
