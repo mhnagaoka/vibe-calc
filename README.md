@@ -11,16 +11,18 @@ A modern web-based **Reverse Polish Notation (RPN) Calculator** built with React
 - ✅ **Number Input**: Full numeric input with decimal point support
 - ✅ **RPN Stack Display**: Shows all 4 stack registers (T, Z, Y, X)
 - ✅ **Enter Operation**: Pushes values onto the stack with proper stack lifting
-- ✅ **Addition**: Performs Y + X → X with stack management
+- ✅ **Math Operations**: Addition, subtraction, multiplication, division with proper RPN semantics
+- ✅ **Stack Operations**: Swap, drop, clear stack, last X recall
+- ✅ **Backspace**: Remove digits from current input with proper X register handling
 - ✅ **Core RPN Engine**: Pure TypeScript implementation with comprehensive tests
+- ✅ **Modern UI**: Built with Tailwind CSS and ShadCN components
 
 ### Coming Soon
 
-- 🔄 **Math Operations**: Subtraction, multiplication, division
-- 🔄 **Stack Operations**: Swap, drop, clear, last X, backspace
-- 🔄 **Error Handling**: Division by zero and stack underflow protection
+- 🔄 **Clear X**: Clear current input only (separate from backspace)
+- 🔄 **Error Handling**: Enhanced error messages and edge case handling
 - 🔄 **Keyboard Support**: Full keyboard navigation and shortcuts
-- 🔄 **Mobile Optimization**: Touch-friendly responsive design
+- 🔄 **Mobile Optimization**: Touch-friendly responsive design improvements
 
 ## 🧮 What is RPN?
 
@@ -104,10 +106,11 @@ src/
 
 The project includes comprehensive tests covering:
 
-- Core RPN calculator operations
-- Stack management and lifting behavior
+- Core RPN calculator operations (enter, setX, stack lifting)
+- Stack management operations (swap, drop, clear, last X)
 - Math operations (addition, subtraction, multiplication, division)
-- Error handling (division by zero, stack underflow)
+- Input handling (backspace, number entry, decimal points)
+- Error handling (division by zero, invalid operations)
 - Real-world calculation workflows
 
 ```bash
@@ -138,21 +141,22 @@ This project follows an incremental development approach. See the complete [deve
 - [x] Number input and display
 - [x] Enter operation with stack management
 
-### Phase 2: Math Operations 🔄 In Progress
+### Phase 2: Math Operations ✅ Completed
 
 - [x] Addition operation
-- [ ] Subtraction operation
-- [ ] Multiplication operation
-- [ ] Division operation
+- [x] Subtraction operation
+- [x] Multiplication operation
+- [x] Division operation
 
-### Phase 3: Stack Operations 📋 Planned
+### Phase 3: Stack Operations ✅ Completed
 
-- [ ] Swap, Drop, Clear operations
-- [ ] Last X functionality
-- [ ] Backspace/Clear X
+- [x] Swap, Drop, Clear operations
+- [x] Last X functionality
+- [x] Backspace operation
 
-### Phase 4: Polish 🎯 Future
+### Phase 4: Polish 🎯 Current/Future
 
+- [ ] Clear X operation (Step 15 - next up)
 - [ ] Enhanced UI/UX
 - [ ] Keyboard support
 - [ ] Mobile optimization

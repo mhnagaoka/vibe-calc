@@ -183,6 +183,34 @@ function App() {
     setShouldLiftOnNextInput(true); // After Last X, next input should lift the stack
   };
 
+  // Handler for backspace operation
+  const handleBackspaceClick = () => {
+    if (isInputMode && inputValue !== "") {
+      // Remove the last character from the input
+      const newInputValue = inputValue.slice(0, -1);
+
+      if (
+        newInputValue === "" ||
+        newInputValue === "-" ||
+        newInputValue === "."
+      ) {
+        // If input becomes empty, just a minus sign, or just a decimal point, clear input mode
+        setInputValue("");
+        setIsInputMode(false);
+        // Set X register to 0 when input is completely cleared
+        calculator.setXRegister(0);
+      } else {
+        // Update input value and X register with the shortened number
+        setInputValue(newInputValue);
+        const numericValue = parseFloat(newInputValue);
+        if (!isNaN(numericValue)) {
+          calculator.setXRegister(numericValue);
+        }
+      }
+    }
+    // If not in input mode, backspace does nothing (preserving calculator state)
+  };
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -233,7 +261,11 @@ function App() {
             >
               Last X
             </Button>
-            <Button variant="destructive" className="text-sm">
+            <Button
+              variant="destructive"
+              className="text-sm"
+              onClick={handleBackspaceClick}
+            >
               ⌫
             </Button>
           </div>

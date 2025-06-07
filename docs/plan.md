@@ -29,7 +29,8 @@ Stack operations are essential for managing the stack during calculations. The f
 - **Drop**: Remove the top element of the stack (X).
 - **Clear Stack**: Clear the entire stack and reset the current input.
 - **Last X**: Store the last dropped or operated-on value and allow it to be pushed back onto the stack.
-- **Backspace / Clear X**: Remove the last digit from the current input or clear the current input entirely.
+- **Backspace**: Remove the last digit from the current input (digit-by-digit editing).
+- **Clear X**: Clear the current input entirely (reset input to empty state).
 
 #### Regarding the Enter (Push) operation
 
@@ -77,7 +78,7 @@ The calculator will have a simple and intuitive layout:
 - **Display Area**: Shows the current stack and input. The stack is "upside down" with the top of the stack at the bottom of the display area.
 - **Number Buttons**: 0-9 and decimal point.
 - **Operation Buttons**: Addition, subtraction, multiplication, division.
-- **Stack Operation Buttons**: Enter (push), Swap, Drop, Clear Stack, Last X, Backspace / Clear X (the backspace and clear X functions should be triggered with the same button).
+- **Stack Operation Buttons**: Enter (push), Swap, Drop, Clear Stack, Last X, Backspace, Clear X.
 - **Responsive Design**: The layout will adapt to different screen sizes, ensuring usability on mobile devices.
 
 The picture below shows the basic screen layout:
@@ -183,14 +184,14 @@ The picture below shows the basic screen layout:
   - Implement the "Last X" button to push this stored value back onto the stack.
   - Update the display.
 
-- [ ] **Step 14: Implement the "Backspace" Operation:**
+- [x] **Step 14: Implement the "Backspace" Operation:** ✅ **COMPLETED**
 
   - Implement the logic to remove the last digit from the current input.
   - Create a "Backspace" button and connect it to this logic.
   - Update the display.
 
 - [ ] **Step 15: Implement the "Clear X" Operation:**
-  - Implement the logic to clear the current input.
+  - Implement the logic to clear the current input entirely (different from backspace which removes one digit at a time).
   - Create a "Clear X" button and connect it to this logic.
   - Update the display.
 
