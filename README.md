@@ -185,7 +185,7 @@ This project is developed for educational purposes as part of learning frontend 
 
 ## 🔗 Links
 
-- **Live Demo**: _Coming soon_
+- **Live Demo**: [https://mau.codes/vibe-calc/](https://mau.codes/vibe-calc/)
 - **Documentation**: [./docs/](./docs/)
 - **Issues**: Please refer to the development plan for current status
 
