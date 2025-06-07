@@ -161,6 +161,17 @@ function App() {
     setShouldLiftOnNextInput(true); // After drop, next input should lift the stack
   };
 
+  // Handler for clear operation
+  const handleClearClick = () => {
+    // Perform the clear operation (clears entire stack and resets)
+    calculator.clearStack();
+
+    // Clear input state and reset all input-related flags
+    setInputValue("");
+    setIsInputMode(false);
+    setShouldLiftOnNextInput(false); // After clear, we start fresh
+  };
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -197,7 +208,11 @@ function App() {
             >
               Drop
             </Button>
-            <Button variant="outline" className="text-sm">
+            <Button
+              variant="outline"
+              className="text-sm"
+              onClick={handleClearClick}
+            >
               Clear
             </Button>
             <Button variant="outline" className="text-sm">

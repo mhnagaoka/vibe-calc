@@ -170,7 +170,7 @@ The picture below shows the basic screen layout:
   - Create a "Drop" button and connect it to this logic.
   - Update the display.
 
-- [ ] **Step 12: Implement the "Clear" Operation:**
+- [x] **Step 12: Implement the "Clear" Operation:** ✅ **COMPLETED**
 
   - Implement the logic to clear the entire stack and reset the current input.
   - Create a "Clear" button and connect it to this logic.
