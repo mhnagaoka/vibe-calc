@@ -151,7 +151,7 @@ The picture below shows the basic screen layout:
   - Create a "Multiplication" button and connect it to this logic.
   - Update the display.
 
-- [ ] **Step 9: Implement the "Division" Operation:**
+- [x] **Step 9: Implement the "Division" Operation:** ✅ **COMPLETED**
   - Implement the logic for the division operation (handling division by zero).
   - Create a "Division" button and connect it to this logic.
   - Update the display.

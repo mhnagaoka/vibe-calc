@@ -126,6 +126,17 @@ function App() {
     setShouldLiftOnNextInput(true);
   };
 
+  // Handler for division operation
+  const handleDivisionClick = () => {
+    // Perform the division operation
+    calculator.divideNumbers();
+
+    // Clear input state and set flag to lift stack on next input
+    setInputValue("");
+    setIsInputMode(false);
+    setShouldLiftOnNextInput(true);
+  };
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -180,6 +191,7 @@ function App() {
             <Button
               variant="default"
               className="bg-orange-500 hover:bg-orange-600"
+              onClick={handleDivisionClick}
             >
               ÷
             </Button>
