@@ -172,6 +172,17 @@ function App() {
     setShouldLiftOnNextInput(false); // After clear, we start fresh
   };
 
+  // Handler for Last X operation
+  const handleLastXClick = () => {
+    // Perform the Last X operation (recalls the last X value and pushes it onto stack)
+    calculator.recallLastX();
+
+    // Clear input state and set flag to lift stack on next input
+    setInputValue("");
+    setIsInputMode(false);
+    setShouldLiftOnNextInput(true); // After Last X, next input should lift the stack
+  };
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -215,7 +226,11 @@ function App() {
             >
               Clear
             </Button>
-            <Button variant="outline" className="text-sm">
+            <Button
+              variant="outline"
+              className="text-sm"
+              onClick={handleLastXClick}
+            >
               Last X
             </Button>
             <Button variant="destructive" className="text-sm">

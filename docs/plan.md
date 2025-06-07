@@ -176,7 +176,7 @@ The picture below shows the basic screen layout:
   - Create a "Clear" button and connect it to this logic.
   - Update the display.
 
-- [ ] **Step 13: Implement the "Last X" Operation:**
+- [x] **Step 13: Implement the "Last X" Operation:** ✅ **COMPLETED**
 
   - Implement the logic to store the last X value from math operations in a separate variable ("last X").
   - Note: LastX should only be set by math operations (add, subtract, multiply, divide), not by stack operations like drop.
