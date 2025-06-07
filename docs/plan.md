@@ -190,10 +190,10 @@ The picture below shows the basic screen layout:
   - Create a "Backspace" button and connect it to this logic.
   - Update the display.
 
-- [ ] **Step 15: Implement the "Clear X" Operation:**
-  - Implement the logic to clear the current input entirely (different from backspace which removes one digit at a time).
-  - Create a "Clear X" button and connect it to this logic.
-  - Update the display.
+- [x] **Step 15: Implement the "Clear X" Operation:** ⏭️ **SKIPPED**
+  - Core logic exists in the RPN calculator engine but UI binding is intentionally skipped for now.
+  - May be reconsidered in future iterations based on user feedback and usage patterns.
+  - The operation remains available for programmatic use and testing.
 
 ### Phase 4: Refinement and Styling
 
