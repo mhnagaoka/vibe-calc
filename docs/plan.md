@@ -195,27 +195,45 @@ The picture below shows the basic screen layout:
   - May be reconsidered in future iterations based on user feedback and usage patterns.
   - The operation remains available for programmatic use and testing.
 
-### Phase 4: Refinement and Styling
+### Phase 4: End-to-End (E2E) Testing with Playwright
 
-- [ ] **Step 16: Improve UI Styling:**
+- [ ] **Step 16: Set Up Playwright:**
+
+  - Install Playwright and its required dependencies as dev dependencies.
+  - Initialize Playwright in the project to generate the basic configuration and folder structure.
+  - Add Playwright scripts to `package.json` for running and debugging tests.
+
+- [ ] **Step 17: Write Basic E2E Tests:**
+
+  - Create E2E tests that cover core calculator workflows (e.g., entering numbers, performing operations, stack manipulation).
+  - Test UI feedback for errors (e.g., division by zero, insufficient stack elements).
+  - Ensure tests cover both desktop and mobile viewport scenarios.
+
+- [ ] **Step 18: Integrate E2E Tests into CI (Optional):**
+
+  - (Optional) Add Playwright test runs to the CI pipeline for automated regression testing.
+
+### Phase 5: Refinement and Styling
+
+- [ ] **Step 19: Improve UI Styling:**
 
   - Refine the visual appearance of the calculator using Tailwind CSS and ShadCN components.
   - Ensure a user-friendly and responsive design.
   - Ensure that the layout is displayed correctly on a mobile phone screen.
 
-- [ ] **Step 17: Error Handling and User Feedback:**
+- [ ] **Step 20: Error Handling and User Feedback:**
 
   - Implement better error handling for cases like insufficient stack elements for operations or division by zero.
   - Provide clear feedback to the user through the display.
 
-- [ ] **Step 18: Keyboard Input:**
+- [ ] **Step 21: Keyboard Input:**
 
   - Add keyboard event handlers.
   - Map keyboard keys to calculator functions.
   - Implement keyboard shortcuts for operations.
   - Add visual feedback for key presses.
 
-- [ ] **Step 19: Code Refactoring (Optional):**
+- [ ] **Step 22: Code Refactoring (Optional):**
   - If the logic has become too complex within the main component, consider refactoring the core RPN calculator logic into a separate module or custom hook to improve organization and maintainability.
 
 ## Testing Strategy
