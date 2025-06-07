@@ -134,13 +134,18 @@ The calculator will be available at `http://localhost:5173`
 npm run dev          # Start development server
 npm run build        # Build for production
 npm run preview      # Preview production build
+npm run lint         # Run ESLint
+
+# Unit Testing (Vitest)
 npm run test         # Run unit tests in watch mode
 npm run test:run     # Run unit tests once
-npm run test:coverage # Run unit tests with coverage
+npm run test:coverage # Run unit tests with coverage (watch mode)
+npm run test:coverage:run # Run unit tests with coverage once (CI)
+
+# E2E Testing (Playwright)
 npm run test:e2e     # Run E2E tests with Playwright
 npm run test:e2e:headed # Run E2E tests with browser UI
 npm run test:e2e:ui  # Run E2E tests with Playwright UI
-npm run lint         # Run ESLint
 ```
 
 ## 🏗️ Architecture
@@ -202,6 +207,44 @@ npm run test:e2e
 npm run test:e2e:headed
 ```
 
+## 🧪 Testing
+
+This project includes comprehensive testing with both unit tests and end-to-end tests, ensuring robust functionality and preventing regressions.
+
+### Test Coverage
+- **32 unit tests** covering all RPN calculator engine functions
+- **56 end-to-end tests** across desktop and mobile viewports 
+- **76.75% line coverage** of core calculator logic
+- **Continuous Integration** runs all tests before deployment
+
+### Unit Tests (Vitest + React Testing Library)
+- **Core RPN Operations**: Enter, setX, stack lifting, register management
+- **Stack Operations**: Swap, drop, clear, last X functionality
+- **Math Operations**: Addition, subtraction, multiplication, division with RPN semantics
+- **Input Handling**: Number entry, decimal points, backspace behavior
+- **Error Scenarios**: Division by zero, invalid operations, edge cases
+- **Workflow Testing**: Real-world calculation sequences
+
+### End-to-End Tests (Playwright)
+- **Complete Workflows**: Full calculator operation from UI perspective
+- **Cross-Browser**: Desktop Chrome and Mobile Chrome compatibility
+- **UI Interaction**: Button clicks, display updates, visual feedback
+- **Error Handling**: Graceful error recovery and user feedback
+- **Performance**: Rapid input stress testing and race condition validation
+
+### Running Tests
+```bash
+# Unit tests
+npm run test              # Watch mode for development
+npm run test:run          # Run once
+npm run test:coverage:run # With coverage report
+
+# E2E tests  
+npm run test:e2e         # Headless mode
+npm run test:e2e:headed  # With browser UI
+npm run test:e2e:ui      # Playwright debug interface
+```
+
 ## 🎨 Tech Stack
 
 - **Frontend**: React 19.1.0 with TypeScript
@@ -235,15 +278,22 @@ This project follows an incremental development approach. See the complete [deve
 - [x] Last X functionality
 - [x] Backspace operation
 
-### Phase 4: Testing & Polish 🎯 Current/Future
+### Phase 4: Testing & CI ✅ Largely Completed
 
-- [x] E2E testing setup with Playwright (Step 16 - completed)
-- [x] Clear X operation (Step 15 - core logic completed, UI skipped)
-- [ ] Comprehensive E2E test coverage
-- [ ] Enhanced UI/UX
-- [ ] Keyboard support
-- [ ] Mobile optimization
-- [ ] Error handling improvements
+- [x] Unit testing setup with Vitest (32 tests, 76.75% coverage)
+- [x] E2E testing setup with Playwright (56 tests across desktop/mobile)
+- [x] GitHub Actions CI pipeline with automated testing
+- [x] Test separation configuration (unit vs E2E tests)
+- [x] Coverage reporting with @vitest/coverage-v8
+- [x] Clear X operation (core logic completed, UI intentionally skipped)
+
+### Phase 5: Enhancement & Polish 🔄 Future
+
+- [ ] Enhanced UI/UX and visual design improvements
+- [ ] Keyboard support and navigation shortcuts  
+- [ ] Mobile optimization and touch interactions
+- [ ] Advanced error handling and user feedback
+- [ ] Performance optimizations
 
 ## 🤝 Contributing
 

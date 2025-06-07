@@ -211,9 +211,13 @@ The picture below shows the basic screen layout:
   - Total of 56 tests covering all calculator functionality with 100% pass rate.
   - Created detailed documentation for test structure and coverage in `e2e/README.md`.
 
-- [ ] **Step 18: Integrate E2E Tests into CI (Optional):**
+- [x] **Step 18: Integrate E2E Tests into CI:** ✅ **COMPLETED**
 
-  - (Optional) Add Playwright test runs to the CI pipeline for automated regression testing.
+  - Integrated both unit tests and E2E tests into the GitHub Actions CI pipeline.
+  - Unit tests run with coverage reporting using Vitest and @vitest/coverage-v8.
+  - E2E tests run against the built application using Playwright.
+  - CI ensures both test suites pass before deployment to GitHub Pages.
+  - Fixed test configuration to prevent conflicts between Vitest and Playwright frameworks.
 
 ### Phase 5: Refinement and Styling
 
@@ -240,7 +244,44 @@ The picture below shows the basic screen layout:
 
 ## Testing Strategy
 
-- Test each operation incrementally as implemented.
-- Verify RPN logic with known calculations.
-- Test edge cases (division by zero, empty stack operations).
-- Cross-browser compatibility testing.
+### Unit Testing (Vitest)
+- **32 unit tests** covering all RPN calculator engine functions
+- **Test coverage**: 76.75% line coverage of core logic
+- **Test files**: `src/test/rpn-calculator.test.ts`, `src/test/workflow.test.ts`
+- **Configuration**: Vitest with jsdom environment, excludes E2E tests
+- **Coverage provider**: @vitest/coverage-v8 for detailed coverage reports
+
+### End-to-End Testing (Playwright)
+- **56 E2E tests** across desktop and mobile viewports
+- **Complete workflow testing**: Number entry, stack operations, arithmetic operations
+- **Error handling**: Division by zero, edge cases, input validation
+- **Cross-browser**: Desktop Chrome and Mobile Chrome scenarios
+- **Test files**: `e2e/example.spec.ts`, `e2e/error-handling.spec.ts`
+
+### Continuous Integration
+- **GitHub Actions pipeline** runs both test suites before deployment
+- **Test separation**: Unit tests and E2E tests run in parallel jobs
+- **Coverage reporting**: CI generates and validates test coverage
+- **Deployment gating**: Application only deploys if all tests pass
+
+### Testing Commands
+```bash
+# Unit tests
+npm run test              # Watch mode for development
+npm run test:run          # Run once and exit
+npm run test:coverage     # Watch mode with coverage
+npm run test:coverage:run # Run once with coverage (CI)
+
+# E2E tests
+npm run test:e2e         # Headless mode
+npm run test:e2e:headed  # With browser UI
+npm run test:e2e:ui      # Playwright debug UI
+```
+
+### Test Coverage Areas
+- Test each operation incrementally as implemented
+- Verify RPN logic with known calculations
+- Test edge cases (division by zero, empty stack operations)
+- Cross-browser compatibility testing
+- Mobile responsiveness validation
+- Performance and stress testing
