@@ -139,7 +139,7 @@ The picture below shows the basic screen layout:
   - Create an "Addition" button and connect it to this logic.
   - Update the display to show the result.
 
-- [ ] **Step 7: Implement the "Subtraction" Operation:**
+- [x] **Step 7: Implement the "Subtraction" Operation:** ✅ **COMPLETED**
 
   - Implement the logic for the subtraction operation (remembering the order of operands in RPN).
   - Create a "Subtraction" button and connect it to this logic.
