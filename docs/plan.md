@@ -178,7 +178,8 @@ The picture below shows the basic screen layout:
 
 - [ ] **Step 13: Implement the "Last X" Operation:**
 
-  - Implement the logic to store the last dropped or operated-on value in a separate variable ("last X").
+  - Implement the logic to store the last X value from math operations in a separate variable ("last X").
+  - Note: LastX should only be set by math operations (add, subtract, multiply, divide), not by stack operations like drop.
   - Implement the "Last X" button to push this stored value back onto the stack.
   - Update the display.
 

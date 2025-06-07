@@ -127,7 +127,7 @@ describe("RPN Calculator Engine", () => {
       expect(droppedState.stack.y).toBe(2); // Was Z
       expect(droppedState.stack.z).toBe(1); // Was T
       expect(droppedState.stack.t).toBe(0); // Fills from "infinity"
-      expect(droppedState.lastX).toBe(4); // Stores dropped value
+      expect(droppedState.lastX).toBeUndefined(); // Drop should not set lastX
     });
   });
 
@@ -148,17 +148,17 @@ describe("RPN Calculator Engine", () => {
   });
 
   describe("Last X operation", () => {
-    it("should restore last X value with stack lift", () => {
+    it("should restore last X value with stack lift after math operation", () => {
       let state = createInitialState();
       state = setX(state, 5);
       state = enter(state);
       state = setX(state, 3);
-      state = drop(state); // This sets lastX to 3
+      state = add(state); // This sets lastX to 3 (the X value before addition)
 
       const restoredState = lastX(state);
 
       expect(restoredState.stack.x).toBe(3); // Restored lastX
-      expect(restoredState.stack.y).toBe(5); // Lifted
+      expect(restoredState.stack.y).toBe(8); // Lifted (result of 5+3)
       expect(restoredState.stack.z).toBe(0); // Lifted
       expect(restoredState.stack.t).toBe(0); // Lifted
     });
@@ -168,6 +168,32 @@ describe("RPN Calculator Engine", () => {
       const unchangedState = lastX(state);
 
       expect(unchangedState).toEqual(state);
+    });
+
+    it("should not be affected by setX operations", () => {
+      let state = createInitialState();
+      state = setX(state, 5);
+      state = enter(state);
+      state = setX(state, 3);
+      state = add(state); // Sets lastX to 3
+
+      // Setting X should not change lastX
+      state = setX(state, 42);
+
+      expect(state.lastX).toBe(3); // Should still be 3
+    });
+
+    it("should not be affected by enter operations", () => {
+      let state = createInitialState();
+      state = setX(state, 5);
+      state = enter(state);
+      state = setX(state, 3);
+      state = add(state); // Sets lastX to 3
+
+      // Enter should not change lastX
+      state = enter(state);
+
+      expect(state.lastX).toBe(3); // Should still be 3
     });
   });
 

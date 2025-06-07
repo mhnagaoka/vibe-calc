@@ -25,7 +25,7 @@ export type MathOperation = "add" | "subtract" | "multiply" | "divide";
 // Error types
 export class CalculatorError extends Error {
   public code: string;
-  
+
   constructor(message: string, code: string) {
     super(message);
     this.name = "CalculatorError";
@@ -105,7 +105,7 @@ export function drop(state: CalculatorState): CalculatorState {
       y: state.stack.z, // Y gets old Z
       x: state.stack.y, // X gets old Y
     },
-    lastX: state.stack.x, // Store dropped value in lastX
+    // Drop operation should not affect lastX
   };
 }
 
