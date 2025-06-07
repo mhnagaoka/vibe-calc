@@ -145,7 +145,7 @@ The picture below shows the basic screen layout:
   - Create a "Subtraction" button and connect it to this logic.
   - Update the display.
 
-- [ ] **Step 8: Implement the "Multiplication" Operation:**
+- [x] **Step 8: Implement the "Multiplication" Operation:** ✅ **COMPLETED**
 
   - Implement the logic for the multiplication operation.
   - Create a "Multiplication" button and connect it to this logic.
