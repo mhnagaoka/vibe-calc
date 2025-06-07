@@ -137,6 +137,18 @@ function App() {
     setShouldLiftOnNextInput(true);
   };
 
+  // Handler for swap operation
+  const handleSwapClick = () => {
+    // Perform the swap operation (exchanges X and Y registers)
+    calculator.swapXY();
+
+    // When swap is performed, we should exit input mode to show the updated X register
+    // This ensures the display reflects the swapped value immediately
+    setInputValue("");
+    setIsInputMode(false);
+    setShouldLiftOnNextInput(true); // After swap, next input should lift the stack
+  };
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
@@ -159,7 +171,11 @@ function App() {
           {/* Button Grid */}
           <div className="grid grid-cols-5 gap-2">
             {/* Row 1: Stack Operations */}
-            <Button variant="outline" className="text-sm">
+            <Button
+              variant="outline"
+              className="text-sm"
+              onClick={handleSwapClick}
+            >
               Swap
             </Button>
             <Button variant="outline" className="text-sm">

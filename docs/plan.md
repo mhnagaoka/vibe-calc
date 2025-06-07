@@ -158,7 +158,7 @@ The picture below shows the basic screen layout:
 
 ### Phase 3: Implementing Stack Operations
 
-- [ ] **Step 10: Implement the "Swap" Operation:**
+- [x] **Step 10: Implement the "Swap" Operation:** ✅ **COMPLETED**
 
   - Implement the logic to swap the top two elements on the stack.
   - Create a "Swap" button and connect it to this logic.
