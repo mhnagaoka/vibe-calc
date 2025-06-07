@@ -2,6 +2,10 @@
 
 A modern web-based **Reverse Polish Notation (RPN) Calculator** built with React, TypeScript, Tailwind CSS, and ShadCN components. This project showcases "vibe coding" - developing a complete application through collaborative interaction with AI while learning frontend development.
 
+## 🚀 [Try the Live Demo](https://mau.codes/vibe-calc/)
+
+Experience the calculator in action before diving into the details!
+
 ![RPN Calculator](./docs/rpn-calc-layout.png)
 
 ## ✨ Features
@@ -39,6 +43,67 @@ A modern web-based **Reverse Polish Notation (RPN) Calculator** built with React
 - **Y**: Second value
 - **Z**: Third value
 - **T**: Fourth value
+
+## 🎯 Why Choose RPN?
+
+RPN calculators offer several advantages over traditional infix calculators:
+
+### 1. **No Parentheses Needed**
+
+RPN eliminates the need for parentheses in complex calculations:
+
+- **Regular**: `(3 + 4) × (5 + 6) =`
+- **RPN**: `3 4 + 5 6 + ×`
+
+### 2. **Natural Problem-Solving Flow**
+
+RPN follows how you naturally solve math problems step by step:
+
+- Calculate intermediate results as you go
+- Each step builds on the previous result
+- No need to remember operator precedence rules
+
+### 3. **More Efficient Entry**
+
+For chain calculations, RPN requires fewer keystrokes:
+
+- **Regular**: `15 + 25 = 40, then 40 × 3 = 120`
+- **RPN**: `15 25 + 3 ×` (no equals button needed)
+
+### 4. **Complete Visibility**
+
+The 4-register stack (T, Z, Y, X) gives you:
+
+- Full visibility of your calculation state
+- Easy reuse of previous results
+- Better understanding of intermediate values
+
+### 5. **Fewer Calculation Errors**
+
+RPN reduces mistakes because:
+
+- No ambiguity about order of operations
+- Immediate feedback on intermediate results
+- Stack operations (swap, drop, last X) help correct errors quickly
+
+### 6. **Professional Heritage**
+
+RPN is the preferred choice of:
+
+- Engineers and scientists
+- Financial professionals
+- Anyone doing complex calculations regularly
+- Users of classic HP calculators
+
+### 7. **Consistent Logic**
+
+Every RPN operation follows the same simple pattern:
+
+1. Enter operands onto the stack
+2. Press the operator
+3. Result appears immediately
+
+The trade-off is an initial learning curve, but users who master RPN often find it much more efficient and intuitive for their calculation workflows!
 
 ## 🚀 Getting Started
 
