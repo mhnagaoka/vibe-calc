@@ -245,6 +245,7 @@ The picture below shows the basic screen layout:
 ## Testing Strategy
 
 ### Unit Testing (Vitest)
+
 - **32 unit tests** covering all RPN calculator engine functions
 - **Test coverage**: 76.75% line coverage of core logic
 - **Test files**: `src/test/rpn-calculator.test.ts`, `src/test/workflow.test.ts`
@@ -252,6 +253,7 @@ The picture below shows the basic screen layout:
 - **Coverage provider**: @vitest/coverage-v8 for detailed coverage reports
 
 ### End-to-End Testing (Playwright)
+
 - **56 E2E tests** across desktop and mobile viewports
 - **Complete workflow testing**: Number entry, stack operations, arithmetic operations
 - **Error handling**: Division by zero, edge cases, input validation
@@ -259,12 +261,14 @@ The picture below shows the basic screen layout:
 - **Test files**: `e2e/example.spec.ts`, `e2e/error-handling.spec.ts`
 
 ### Continuous Integration
+
 - **GitHub Actions pipeline** runs both test suites before deployment
 - **Test separation**: Unit tests and E2E tests run in parallel jobs
 - **Coverage reporting**: CI generates and validates test coverage
 - **Deployment gating**: Application only deploys if all tests pass
 
 ### Testing Commands
+
 ```bash
 # Unit tests
 npm run test              # Watch mode for development
@@ -279,6 +283,7 @@ npm run test:e2e:ui      # Playwright debug UI
 ```
 
 ### Test Coverage Areas
+
 - Test each operation incrementally as implemented
 - Verify RPN logic with known calculations
 - Test edge cases (division by zero, empty stack operations)

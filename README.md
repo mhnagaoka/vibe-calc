@@ -180,6 +180,7 @@ src/
 The project includes comprehensive testing at multiple levels:
 
 ### Unit Tests
+
 - Core RPN calculator operations (enter, setX, stack lifting)
 - Stack management operations (swap, drop, clear, last X)
 - Math operations (addition, subtraction, multiplication, division)
@@ -188,6 +189,7 @@ The project includes comprehensive testing at multiple levels:
 - Real-world calculation workflows
 
 ### End-to-End Tests
+
 - Complete calculator workflows with Playwright
 - UI interaction testing (button clicks, display updates)
 - Cross-browser compatibility (Desktop Chrome, Mobile Chrome)
@@ -212,12 +214,14 @@ npm run test:e2e:headed
 This project includes comprehensive testing with both unit tests and end-to-end tests, ensuring robust functionality and preventing regressions.
 
 ### Test Coverage
+
 - **32 unit tests** covering all RPN calculator engine functions
-- **56 end-to-end tests** across desktop and mobile viewports 
+- **56 end-to-end tests** across desktop and mobile viewports
 - **76.75% line coverage** of core calculator logic
 - **Continuous Integration** runs all tests before deployment
 
 ### Unit Tests (Vitest + React Testing Library)
+
 - **Core RPN Operations**: Enter, setX, stack lifting, register management
 - **Stack Operations**: Swap, drop, clear, last X functionality
 - **Math Operations**: Addition, subtraction, multiplication, division with RPN semantics
@@ -226,6 +230,7 @@ This project includes comprehensive testing with both unit tests and end-to-end 
 - **Workflow Testing**: Real-world calculation sequences
 
 ### End-to-End Tests (Playwright)
+
 - **Complete Workflows**: Full calculator operation from UI perspective
 - **Cross-Browser**: Desktop Chrome and Mobile Chrome compatibility
 - **UI Interaction**: Button clicks, display updates, visual feedback
@@ -233,13 +238,14 @@ This project includes comprehensive testing with both unit tests and end-to-end 
 - **Performance**: Rapid input stress testing and race condition validation
 
 ### Running Tests
+
 ```bash
 # Unit tests
 npm run test              # Watch mode for development
 npm run test:run          # Run once
 npm run test:coverage:run # With coverage report
 
-# E2E tests  
+# E2E tests
 npm run test:e2e         # Headless mode
 npm run test:e2e:headed  # With browser UI
 npm run test:e2e:ui      # Playwright debug interface
@@ -290,7 +296,7 @@ This project follows an incremental development approach. See the complete [deve
 ### Phase 5: Enhancement & Polish 🔄 Future
 
 - [ ] Enhanced UI/UX and visual design improvements
-- [ ] Keyboard support and navigation shortcuts  
+- [ ] Keyboard support and navigation shortcuts
 - [ ] Mobile optimization and touch interactions
 - [ ] Advanced error handling and user feedback
 - [ ] Performance optimizations
