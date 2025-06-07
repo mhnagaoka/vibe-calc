@@ -208,7 +208,9 @@ describe("RPN Calculator Engine", () => {
         const result = add(state);
 
         expect(result.stack.x).toBe(7); // 3 + 4
-        expect(result.stack.y).toBe(0); // Stack drops
+        expect(result.stack.y).toBe(0); // Old Z (was 0)
+        expect(result.stack.z).toBe(0); // Old T (was 0)
+        expect(result.stack.t).toBe(0); // Filled from "infinity"
         expect(result.lastX).toBe(4); // Stores consumed X
       });
 
@@ -238,6 +240,9 @@ describe("RPN Calculator Engine", () => {
         const result = subtract(state);
 
         expect(result.stack.x).toBe(7); // 10 - 3
+        expect(result.stack.y).toBe(0); // Old Z (was 0)
+        expect(result.stack.z).toBe(0); // Old T (was 0)
+        expect(result.stack.t).toBe(0); // Filled from "infinity"
         expect(result.lastX).toBe(3);
       });
 
@@ -250,6 +255,9 @@ describe("RPN Calculator Engine", () => {
         const result = subtract(state);
 
         expect(result.stack.x).toBe(-3); // 5 - 8
+        expect(result.stack.y).toBe(0); // Old Z (was 0)
+        expect(result.stack.z).toBe(0); // Old T (was 0)
+        expect(result.stack.t).toBe(0); // Filled from "infinity"
       });
     });
 
@@ -263,6 +271,9 @@ describe("RPN Calculator Engine", () => {
         const result = multiply(state);
 
         expect(result.stack.x).toBe(42); // 6 * 7
+        expect(result.stack.y).toBe(0); // Old Z (was 0)
+        expect(result.stack.z).toBe(0); // Old T (was 0)
+        expect(result.stack.t).toBe(0); // Filled from "infinity"
         expect(result.lastX).toBe(7);
       });
     });
@@ -277,6 +288,9 @@ describe("RPN Calculator Engine", () => {
         const result = divide(state);
 
         expect(result.stack.x).toBe(5); // 15 / 3
+        expect(result.stack.y).toBe(0); // Old Z (was 0)
+        expect(result.stack.z).toBe(0); // Old T (was 0)
+        expect(result.stack.t).toBe(0); // Filled from "infinity"
         expect(result.lastX).toBe(3);
       });
 
@@ -289,6 +303,9 @@ describe("RPN Calculator Engine", () => {
         const result = divide(state);
 
         expect(result.stack.x).toBeCloseTo(3.333333333333333); // 10 / 3
+        expect(result.stack.y).toBe(0); // Old Z (was 0)
+        expect(result.stack.z).toBe(0); // Old T (was 0)
+        expect(result.stack.t).toBe(0); // Filled from "infinity"
       });
 
       it("should throw error on division by zero", () => {
@@ -300,6 +317,140 @@ describe("RPN Calculator Engine", () => {
         expect(() => divide(state)).toThrow(CalculatorError);
         expect(() => divide(state)).toThrow("Division by zero");
       });
+    });
+  });
+
+  describe("Stack Drop Behavior in Math Operations", () => {
+    it("should properly drop stack through multiple operations: 2, enter, 4, enter, 6, enter, 8, +, -, ×", () => {
+      let state = createInitialState();
+
+      // Build the stack: 2, enter, 4, enter, 6, enter, 8
+      state = setX(state, 2);
+      state = enter(state);
+      // Stack: T=0, Z=0, Y=2, X=2
+
+      state = setX(state, 4);
+      state = enter(state);
+      // Stack: T=0, Z=2, Y=4, X=4
+
+      state = setX(state, 6);
+      state = enter(state);
+      // Stack: T=2, Z=4, Y=6, X=6
+
+      state = setX(state, 8);
+      // Stack: T=2, Z=4, Y=6, X=8
+
+      // Addition: 6 + 8 = 14
+      state = add(state);
+      // Should be: T=0, Z=2, Y=4, X=14 (proper stack drop)
+      expect(state.stack.x).toBe(14);
+      expect(state.stack.y).toBe(4); // Old Z
+      expect(state.stack.z).toBe(2); // Old T
+      expect(state.stack.t).toBe(0); // Filled from "infinity"
+
+      // Subtraction: 4 - 14 = -10
+      state = subtract(state);
+      // Should be: T=0, Z=0, Y=2, X=-10 (proper stack drop)
+      expect(state.stack.x).toBe(-10);
+      expect(state.stack.y).toBe(2); // Old Z
+      expect(state.stack.z).toBe(0); // Old T
+      expect(state.stack.t).toBe(0); // Filled from "infinity"
+
+      // Multiplication: 2 × -10 = -20
+      state = multiply(state);
+      // Should be: T=0, Z=0, Y=0, X=-20 (proper stack drop)
+      expect(state.stack.x).toBe(-20);
+      expect(state.stack.y).toBe(0); // Old Z
+      expect(state.stack.z).toBe(0); // Old T
+      expect(state.stack.t).toBe(0); // Filled from "infinity"
+    });
+
+    it("should properly drop stack in addition operation", () => {
+      let state = createInitialState();
+
+      // Set up stack: T=10, Z=20, Y=30, X=40
+      state = setX(state, 10);
+      state = enter(state);
+      state = setX(state, 20);
+      state = enter(state);
+      state = setX(state, 30);
+      state = enter(state);
+      state = setX(state, 40);
+
+      // Addition: 30 + 40 = 70
+      const result = add(state);
+
+      expect(result.stack.x).toBe(70); // Result
+      expect(result.stack.y).toBe(20); // Old Z
+      expect(result.stack.z).toBe(10); // Old T
+      expect(result.stack.t).toBe(0); // Filled from "infinity"
+      expect(result.lastX).toBe(40); // Consumed X
+    });
+
+    it("should properly drop stack in subtraction operation", () => {
+      let state = createInitialState();
+
+      // Set up stack: T=10, Z=20, Y=30, X=5
+      state = setX(state, 10);
+      state = enter(state);
+      state = setX(state, 20);
+      state = enter(state);
+      state = setX(state, 30);
+      state = enter(state);
+      state = setX(state, 5);
+
+      // Subtraction: 30 - 5 = 25
+      const result = subtract(state);
+
+      expect(result.stack.x).toBe(25); // Result
+      expect(result.stack.y).toBe(20); // Old Z
+      expect(result.stack.z).toBe(10); // Old T
+      expect(result.stack.t).toBe(0); // Filled from "infinity"
+      expect(result.lastX).toBe(5); // Consumed X
+    });
+
+    it("should properly drop stack in multiplication operation", () => {
+      let state = createInitialState();
+
+      // Set up stack: T=1, Z=2, Y=3, X=4
+      state = setX(state, 1);
+      state = enter(state);
+      state = setX(state, 2);
+      state = enter(state);
+      state = setX(state, 3);
+      state = enter(state);
+      state = setX(state, 4);
+
+      // Multiplication: 3 * 4 = 12
+      const result = multiply(state);
+
+      expect(result.stack.x).toBe(12); // Result
+      expect(result.stack.y).toBe(2); // Old Z
+      expect(result.stack.z).toBe(1); // Old T
+      expect(result.stack.t).toBe(0); // Filled from "infinity"
+      expect(result.lastX).toBe(4); // Consumed X
+    });
+
+    it("should properly drop stack in division operation", () => {
+      let state = createInitialState();
+
+      // Set up stack: T=5, Z=10, Y=20, X=4
+      state = setX(state, 5);
+      state = enter(state);
+      state = setX(state, 10);
+      state = enter(state);
+      state = setX(state, 20);
+      state = enter(state);
+      state = setX(state, 4);
+
+      // Division: 20 / 4 = 5
+      const result = divide(state);
+
+      expect(result.stack.x).toBe(5); // Result
+      expect(result.stack.y).toBe(10); // Old Z
+      expect(result.stack.z).toBe(5); // Old T
+      expect(result.stack.t).toBe(0); // Filled from "infinity"
+      expect(result.lastX).toBe(4); // Consumed X
     });
   });
 

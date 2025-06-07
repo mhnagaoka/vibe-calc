@@ -154,8 +154,8 @@ export function add(state: CalculatorState): CalculatorState {
   return {
     ...state,
     stack: {
-      t: state.stack.t, // T stays the same
-      z: state.stack.t, // Z gets T (fill from "infinity")
+      t: 0, // T gets filled from "infinity" (zero)
+      z: state.stack.t, // Z gets old T
       y: state.stack.z, // Y gets old Z
       x: result, // X gets the result
     },
@@ -172,10 +172,10 @@ export function subtract(state: CalculatorState): CalculatorState {
   return {
     ...state,
     stack: {
-      t: state.stack.t,
-      z: state.stack.t,
-      y: state.stack.z,
-      x: result,
+      t: 0, // T gets filled from "infinity" (zero)
+      z: state.stack.t, // Z gets old T
+      y: state.stack.z, // Y gets old Z
+      x: result, // X gets the result
     },
     lastX: state.stack.x,
   };
@@ -190,10 +190,10 @@ export function multiply(state: CalculatorState): CalculatorState {
   return {
     ...state,
     stack: {
-      t: state.stack.t,
-      z: state.stack.t,
-      y: state.stack.z,
-      x: result,
+      t: 0, // T gets filled from "infinity" (zero)
+      z: state.stack.t, // Z gets old T
+      y: state.stack.z, // Y gets old Z
+      x: result, // X gets the result
     },
     lastX: state.stack.x,
   };
@@ -213,10 +213,10 @@ export function divide(state: CalculatorState): CalculatorState {
   return {
     ...state,
     stack: {
-      t: state.stack.t,
-      z: state.stack.t,
-      y: state.stack.z,
-      x: result,
+      t: 0, // T gets filled from "infinity" (zero)
+      z: state.stack.t, // Z gets old T
+      y: state.stack.z, // Y gets old Z
+      x: result, // X gets the result
     },
     lastX: state.stack.x,
   };
