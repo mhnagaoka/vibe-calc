@@ -134,9 +134,12 @@ The calculator will be available at `http://localhost:5173`
 npm run dev          # Start development server
 npm run build        # Build for production
 npm run preview      # Preview production build
-npm run test         # Run tests in watch mode
-npm run test:run     # Run tests once
-npm run test:coverage # Run tests with coverage
+npm run test         # Run unit tests in watch mode
+npm run test:run     # Run unit tests once
+npm run test:coverage # Run unit tests with coverage
+npm run test:e2e     # Run E2E tests with Playwright
+npm run test:e2e:headed # Run E2E tests with browser UI
+npm run test:e2e:ui  # Run E2E tests with Playwright UI
 npm run lint         # Run ESLint
 ```
 
@@ -169,8 +172,9 @@ src/
 
 ## 🧪 Testing
 
-The project includes comprehensive tests covering:
+The project includes comprehensive testing at multiple levels:
 
+### Unit Tests
 - Core RPN calculator operations (enter, setX, stack lifting)
 - Stack management operations (swap, drop, clear, last X)
 - Math operations (addition, subtraction, multiplication, division)
@@ -178,12 +182,24 @@ The project includes comprehensive tests covering:
 - Error handling (division by zero, invalid operations)
 - Real-world calculation workflows
 
+### End-to-End Tests
+- Complete calculator workflows with Playwright
+- UI interaction testing (button clicks, display updates)
+- Cross-browser compatibility (Desktop Chrome, Mobile Chrome)
+- Error scenario testing
+
 ```bash
-# Run all tests
+# Run unit tests
 npm run test:run
 
 # Run with coverage
 npm run test:coverage
+
+# Run E2E tests
+npm run test:e2e
+
+# Run E2E tests with browser UI visible
+npm run test:e2e:headed
 ```
 
 ## 🎨 Tech Stack
@@ -191,7 +207,7 @@ npm run test:coverage
 - **Frontend**: React 19.1.0 with TypeScript
 - **Styling**: Tailwind CSS 4.1.8 + ShadCN components
 - **Build Tool**: Vite 6.3.5
-- **Testing**: Vitest + React Testing Library
+- **Testing**: Vitest + React Testing Library (unit tests) + Playwright (E2E tests)
 - **Code Quality**: ESLint + TypeScript ESLint
 
 ## 📋 Development Plan
@@ -219,9 +235,11 @@ This project follows an incremental development approach. See the complete [deve
 - [x] Last X functionality
 - [x] Backspace operation
 
-### Phase 4: Polish 🎯 Current/Future
+### Phase 4: Testing & Polish 🎯 Current/Future
 
+- [x] E2E testing setup with Playwright (Step 16 - completed)
 - [x] Clear X operation (Step 15 - core logic completed, UI skipped)
+- [ ] Comprehensive E2E test coverage
 - [ ] Enhanced UI/UX
 - [ ] Keyboard support
 - [ ] Mobile optimization

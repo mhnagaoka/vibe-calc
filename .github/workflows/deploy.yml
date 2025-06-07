@@ -36,8 +36,6 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        with:
-          static_site_generator: vite
 
       - name: Install dependencies
         run: npm ci
@@ -50,13 +48,43 @@ jobs:
         with:
           path: ./dist
 
+  e2e:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Start Vite dev server
+        run: npm run dev &
+        env:
+          NODE_ENV: test
+
+      - name: Wait for Vite dev server to be ready
+        run: npx wait-on http://localhost:5173
+
+      - name: Run Playwright E2E tests
+        run: npm run test:e2e
+
   # Deployment job
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build, e2e]
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

@@ -197,7 +197,7 @@ The picture below shows the basic screen layout:
 
 ### Phase 4: End-to-End (E2E) Testing with Playwright
 
-- [ ] **Step 16: Set Up Playwright:**
+- [x] **Step 16: Set Up Playwright:** ✅ **COMPLETED**
 
   - Install Playwright and its required dependencies as dev dependencies.
   - Initialize Playwright in the project to generate the basic configuration and folder structure.
