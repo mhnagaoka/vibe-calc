@@ -2,7 +2,7 @@
 
 A modern web-based **Reverse Polish Notation (RPN) Calculator** built with React, TypeScript, Tailwind CSS, and ShadCN components. This project showcases "vibe coding" - developing a complete application through collaborative interaction with AI while learning frontend development.
 
-## 🚀 [Try the Live Demo]([https://mau.codes/vibe-calc/](https://mhnagaoka.github.io/vibe-calc/])
+## 🚀 [Try the Live Demo](https://mau.codes/vibe-calc/](https://mhnagaoka.github.io/vibe-calc/)
 
 Experience the calculator in action before diving into the details!
 
